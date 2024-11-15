@@ -14,14 +14,13 @@ Source: Joint Research Centre, European Comission.
 
 Data Attributes:
 - Country: EU member states
-- Commodity: 
+- Commodity: Apples, barley, butter, milk, oats, soybean, sunflower and wine
 - Year: 2014-2024
-- Apparent Use: Total consumption estimate
-- Apparent Use per Capita: Normalized by population
-- Harvested Area
-- Self Sufficiency: Ratio of production to consumption
-- Yield: Output per unit area
-
+- Apparent Use: Total consumption estimate (in 1000 tonnes/hectolitres)
+- Apparent Use per Capita: Normalized by population (in kg or litres per person)
+- Harvested Area (in 1000 hectares)
+- Self Sufficiency: Ratio of production to consumption (ratio)
+- Yield: Output per unit area (in tonnes/hectolitres per hectar)
 
 ### 2. eu27_economic_data
 Source: Eurostat via AMECO database, European Comission.
