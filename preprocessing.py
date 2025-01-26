@@ -39,13 +39,44 @@ def preprocess_consumption_data():
     
     return data
 
+def preprocess_full_data(data):
+    data['Variable'] = data['Variable'].replace({'Apparent use': 'consumption', 
+                                             'Apparent use per capita': 'consumption pP', 
+                                             'GDP per head, at current prices (HVGDP)': 'GDP pP', 
+                                             'GDP, at current prices (UVGD)': 'GDP', 
+                                             'Private FCE, at current prices (UCPH)': 'FCE', 
+                                             'Wage and salary earners (Persons),Total economy, domestic (NWTD)': 'salary earners'
+                                             })
 
-def main(): 
-    if __name__ == '__main__':
-        consumption_data = preprocess_consumption_data()
-        economic_data = preprocess_economic_data()
-        
-        full_data = pd.concat([consumption_data, economic_data])
-        full_data.to_csv('data/full_data.csv', index=False)
-        
-main()
+    data['Commodity'] = data['Commodity'].replace({'APPLES': 'apples',
+                                               'BARLEY': 'barley',
+                                               'OATS': 'oats',
+                                               'SOYA BEAN': 'soy',
+                                               'SUNFLOWER': 'sunflower',
+                                               'WINE': 'wine',
+                                               'BUTTER (80-90% FAT)': 'butter',
+                                               'DRINKING MILK': 'milk'
+                                               })
+    
+    data['Country'] = data['Country'].replace({'Czechia': 'Czech Republic'})
+    
+    region = {'Austria': 'Central Europe', 'Belgium': 'Western Europe', 'Bulgaria': 'South Eastern Europe', 'Croatia': 'South Eastern Europe',
+            'Cyprus': 'Southern Europe', 'Czech Republic': 'Central Europe', 'Denmark': 'Northern Europe', 'Estonia': 'Northern Europe',
+            'Finland': 'Northern Europe', 'France': 'Western Europe', 'Germany': 'Central Europe', 'Greece': 'Southern Europe',
+            'Hungary': 'Central Europe', 'Ireland': 'Western Europe', 'Italy': 'Southern Europe', 'Latvia': 'Northern Europe',
+            'Lithuania': 'Northern Europe', 'Luxembourg': 'Western Europe', 'Malta': 'Southern Europe', 'Netherlands': 'Western Europe',
+            'Poland': 'Central Europe', 'Portugal': 'Southern Europe', 'Romania': 'South Eastern Europe', 'Slovakia': 'Central Europe',
+            'Slovenia': 'Central Europe', 'Spain': 'Southern Europe', 'Sweden': 'Northern Europe'
+        }
+    data['Region'] = data['Country'].map(region)
+    
+    return data
+
+ 
+if __name__ == '__main__':
+    consumption_data = preprocess_consumption_data()
+    economic_data = preprocess_economic_data()
+    
+    full_data = pd.concat([consumption_data, economic_data])
+    full_data = preprocess_full_data(full_data)
+    full_data.to_csv('app/full_data.csv', index=False)
