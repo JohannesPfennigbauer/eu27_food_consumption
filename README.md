@@ -5,7 +5,7 @@ This project is a visual exploration of economic and food consumption data of EU
 The aim of the project is to examine patterns of food consumption of selected products across all 27 EU member states. It investigates regional and temporal trends and compares food consumption data with economic indicators, such as private expenditure or gross domestic product, to identify possible correlations. The data could reveal wether increased private spending leads to increased food consumption or wether the money is spent elsewhere, for instance. It will also be interesting to see if there are regional clusters for certain products, such as milk or apples. The research question could be formulated as follows: *How do economic factors influence food consumption patterns across EU member states, and what regional trends or clusters can be identified?*
 
 ## Usability
-1. Install python version 3.10.12
+1. Install python version 3.13.1
 2. Run `pip install -r requirements.txt`
 3. Run `streamlit run app/app.py`
 
